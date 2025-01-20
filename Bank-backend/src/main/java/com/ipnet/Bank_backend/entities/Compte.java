@@ -9,12 +9,14 @@ public class Compte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String proprietaire;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client proprietaire;
 
     private Double balance;
 
     @ManyToOne
-    @JoinColumn(name = "typeCompte_id")
+    @JoinColumn(name = "typeCompte_id", nullable = false)
     private TypeCompte typeCompte;
 
     // Constructeur par défaut
@@ -22,7 +24,7 @@ public class Compte {
     }
 
     // Constructeur avec tous les champs
-    public Compte(Long id, String proprietaire, Double balance, TypeCompte typeCompte) {
+    public Compte(Long id, Client proprietaire, Double balance, TypeCompte typeCompte) {
         this.id = id;
         this.proprietaire = proprietaire;
         this.balance = balance;
@@ -39,11 +41,11 @@ public class Compte {
         this.id = id;
     }
 
-    public String getProprietaire() {
+    public Client getProprietaire() {
         return proprietaire;
     }
 
-    public void setProprietaire(String proprietaire) {
+    public void setProprietaire(Client proprietaire) {
         this.proprietaire = proprietaire;
     }
 
