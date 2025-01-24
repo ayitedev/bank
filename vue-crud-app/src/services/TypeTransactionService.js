@@ -30,4 +30,4 @@ class TypeTransactionService {
   }
 }
 
-export default new type-transaction();
+export default new TypeTransactionService();
